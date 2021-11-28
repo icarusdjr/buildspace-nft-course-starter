@@ -106,9 +106,9 @@ return (
   <div className="App">
     <div className="container">
       <div className="header-container">
-        <p className="header gradient-text">NFT Collection</p>
+        <p className="header gradient-text">One Piece NFT</p>
         <p className="sub-text">
-          Create your own Strawhat Pirate crewmate. Mint your NFT today.
+          Create your own randomized Strawhat Pirate crewmate.
         </p>
         {currentAccount === "" ? (
           renderNotConnectedContainer()
