@@ -168,9 +168,10 @@ return (
       </div>
       
       <div className="opensea">
-      <button href={OPENSEA_LINK} target="_blank" className="cta-button connect-wallet-button">
+      <a href={OPENSEA_LINK} target="_blank">
+        <button className="cta-button connect-wallet-button">
             View Collection on OpenSea
-      </button>
+      </button></a>
       </div>
       
       <div className="footer-container">
