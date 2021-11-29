@@ -7,11 +7,11 @@ import myEpicNft from './utils/MyEpicNFT.json';
 // Constants
 const TWITTER_HANDLE = 'icarusdjr';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_LINK = '';
+const OPENSEA_LINK = 'https://testnets.opensea.io/collection/one-piece-crew-v3';
 const TOTAL_MINT_COUNT = 50;
 
 // I moved the contract address to the top for easy access.
-const CONTRACT_ADDRESS = "0x8232231915c2F4f633Ee7440E1D8EcE757bFE71B";
+const CONTRACT_ADDRESS = "0x82463E6c4D2b86Dd1b322a9B576bb48B03575659";
 
 const App = () => {
 
@@ -36,7 +36,16 @@ const App = () => {
         // Setup listener! This is for the case where a user comes to our site
         // and ALREADY had their wallet connected + authorized.
         setupEventListener()
-        
+    
+    let chainId = await ethereum.request({ method: 'eth_chainId' });
+    console.log("Connected to chain " + chainId);
+    
+    // String, hex code of the chainId of the Rinkebey test network
+    const rinkebyChainId = "0x4"; 
+    if (chainId !== rinkebyChainId) {
+        alert("You are not connected to the Rinkeby Test Network!");
+    }
+
     } else {
         console.log("No authorized account found")
     }
@@ -54,9 +63,7 @@ const connectWallet = async () => {
       return;
     }
 
-    /*
-    * Fancy method to request access to account.
-    */
+    // Fancy method to request access to account.
     const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
     /*
@@ -159,6 +166,13 @@ return (
           </button>
         )}
       </div>
+      
+      <div className="opensea">
+      <button href={OPENSEA_LINK} target="_blank" className="cta-button connect-wallet-button">
+            View Collection on OpenSea
+      </button>
+      </div>
+      
       <div className="footer-container">
         <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
         <a
